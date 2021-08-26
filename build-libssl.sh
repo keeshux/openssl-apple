@@ -220,16 +220,16 @@ finish_build_loop()
 
 function gpg_validate()
 {
-	local TARGET=$1
-	local SIG=${2:-${TARGET}.asc}
+  local TARGET=$1
+  local SIG=${2:-${TARGET}.asc}
 
-	GPG_B=$(which gpg)
-	if [ ! -x "${GPG_B}" ]; then
-		echo "WARN: No gpg executable found in PATH. Please consider installing gpg so archive signature validation can proceed."
-		return 1
-	fi
+  GPG_B=$(which gpg)
+  if [ ! -x "${GPG_B}" ]; then
+    echo "WARN: No gpg executable found in PATH. Please consider installing gpg so archive signature validation can proceed."
+    return 1
+  fi
 
-	$GPG_B --keyserver pool.sks-keyservers.net --keyserver-options auto-key-retrieve,include-subkeys --verify-options show-photos --verify "${SIG}" "${TARGET}"
+  $GPG_B --keyserver pool.sks-keyservers.net --keyserver-options auto-key-retrieve,include-subkeys --verify-options show-photos --verify "${SIG}" "${TARGET}"
 }
 
 # Init optional command line vars
