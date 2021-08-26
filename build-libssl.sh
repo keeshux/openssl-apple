@@ -218,7 +218,7 @@ finish_build_loop()
   fi
 }
 
-function gpg_validate()
+gpg_validate()
 {
   local TARGET=$1
   local SIG=${2:-${TARGET}.asc}
